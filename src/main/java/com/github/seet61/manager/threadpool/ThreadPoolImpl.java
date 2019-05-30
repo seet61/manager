@@ -1,31 +1,40 @@
 package com.github.seet61.manager.threadpool;
 
+import com.github.seet61.manager.controller.ManagerRestController;
 import com.github.seet61.manager.queue.ThreadQueue;
 import lombok.extern.slf4j.Slf4j;
+import org.json.JSONException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.DependsOn;
+import org.springframework.stereotype.Component;
 
 @Slf4j
+@Component
+@DependsOn("threadQueue")
 public class ThreadPoolImpl implements ThreadPool {
-    private final int nThreads;
-    private final PoolWorker[] threads;
-    private ThreadQueue queue;
+    private int nThreads;
+    private PoolWorker[] threads;
+    @Autowired
+    private ThreadQueue queue = new ThreadQueue();
+    @Autowired
+    private ManagerRestController managerRestController;
 
-    public ThreadPoolImpl(int nThreads) {
-        this.nThreads = nThreads;
-        queue = new ThreadQueue();
-        threads = new PoolWorker[nThreads];
+    ThreadPoolImpl() {
+        this.nThreads = 3;
+        this.threads = new PoolWorker[nThreads];
+        for (int i = 0; i < nThreads; i++) {
+            this.threads[i] = new PoolWorker();
+            this.threads[i].start();
+        }
+        log.debug("Thread pool started!");
     }
 
     /**
      * Запускает потоки.
      * Потоки бездействуют, до тех пор пока не появится новое задание в очереди
      */
-    @Override
-    public void start() {
-        for (int i = 0; i < nThreads; i++) {
-            threads[i] = new PoolWorker();
-            threads[i].start();
-        }
-        log.debug("Thread pool started!");
+    public int start() {
+        return threads.length;
     }
 
     /**
@@ -36,9 +45,9 @@ public class ThreadPoolImpl implements ThreadPool {
      */
     @Override
     public void execute(Runnable runnable) {
-        synchronized (queue) {
-            queue.put(runnable);
-            queue.notifyAll();
+        synchronized (this.queue) {
+            this.queue.put(runnable);
+            this.queue.notifyAll();
         }
     }
 
@@ -47,22 +56,24 @@ public class ThreadPoolImpl implements ThreadPool {
      */
     private class PoolWorker extends Thread {
         public void run() {
-
+            log.debug(Thread.currentThread().getName() + " was started");
             while (true) {
-                synchronized (queue) {
-                    while (queue.getSize() == 0) {
-                        try {
-                            queue.wait();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
+
+                log.debug(Thread.currentThread().getName() + " check messages");
+                while (queue.getSize() == 0) {
                     try {
-                        Runnable task = (Runnable) queue.get();
-                        task.run();
+                        log.debug(Thread.currentThread().getName() + " waiting for messages. Queue size: " + queue.getSize());
+                        Thread.currentThread().sleep(1000);
+                        //queue.wait();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
+                }
+                try {
+                    log.debug(Thread.currentThread().getName() + " start execute task");
+                    managerRestController.taskTake();
+                } catch (JSONException e) {
+                    log.error(e.getStackTrace().toString());
                 }
             }
         }

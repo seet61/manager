@@ -14,6 +14,7 @@ public class ThreadQueue<T> {
     public synchronized void put(T task) {
         this.queue.add(task);
         this.notifyAll();
+        log.debug("New task added to queue");
     }
 
     public synchronized <T> T get() throws InterruptedException {
@@ -22,6 +23,7 @@ public class ThreadQueue<T> {
         }
         T el = (T) queue.element();
         queue.remove(el);
+        log.debug("New task selected from queue");
         return el;
     }
 

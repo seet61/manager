@@ -28,7 +28,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/github/seet61/manager/dao/TasksDAO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/github/seet61/manager/entities/PingResponse.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/github/seet61/manager/entities/TaskEntity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/github/seet61/manager/model/Tasks.java">
           <value>
             <set />
           </value>
@@ -69,6 +84,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/test/java/com/github/seet61/manager/ManagerAppTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/test/java/com/github/seet61/manager/threadpool/ThreadPoolImplTest.java">
           <value>
             <set />
           </value>
