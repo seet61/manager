@@ -12,6 +12,8 @@ public class Tasks {
     @GeneratedValue
     @Column(name = "Id", nullable = false)
     private Long id;
+    @Column(name="name")
     private String name;
+    @Column(name="status")
     private String status;
 }

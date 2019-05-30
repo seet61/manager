@@ -64,6 +64,7 @@ public class Task implements Runnable{
         log.debug(Thread.currentThread() + " checkPreviousDone " + name);
         while(flag) {
             List<Tasks> e = tasksDAO.findByName(name);
+            log.debug(Thread.currentThread() + " List<Tasks> e: " + e.toString());
             if (!e.get(0).getStatus().equals("done")) {
                 Thread.currentThread().sleep(1000);
             } else {
@@ -73,7 +74,7 @@ public class Task implements Runnable{
     }
 
     private void sleep(int t) throws InterruptedException {
-        log.debug(this.name + " sleep " + t + " sec");
+        log.debug(Thread.currentThread() + " " + this.name + " sleep " + t + " sec");
         Thread.sleep(t * 1000);
     }
 }
