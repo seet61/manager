@@ -4,10 +4,7 @@ import com.github.seet61.manager.dao.TasksDAO;
 import com.github.seet61.manager.model.Tasks;
 import com.github.seet61.manager.queue.Task;
 import com.github.seet61.manager.queue.ThreadQueue;
-import com.github.seet61.manager.threadpool.ThreadPool;
-import com.github.seet61.manager.threadpool.ThreadPoolImpl;
 import lombok.extern.slf4j.Slf4j;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -54,12 +51,6 @@ public class ManagerRestService {
     }
 
     public String taskResult(Map<String,String> reqBody) {
-        /*Tasks tasksEntity = new Tasks();
-        tasksEntity.setName(reqBody.get("name"));
-        tasksEntity.setStatus(reqBody.get("status"));*/
-        List<Tasks> t = tasksDAO.findAll();
-        System.out.println("List<Tasks> t");
-        t.forEach(System.out::print);
         tasksDAO.setStatusByName(reqBody.get("status"), reqBody.get("name"));
         return "";
     }

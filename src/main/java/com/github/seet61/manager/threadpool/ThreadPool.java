@@ -4,7 +4,7 @@ public interface ThreadPool {
     /**
      * Start threads
      */
-    int start();
+    int check();
 
     /**
      * @param runnable

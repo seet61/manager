@@ -29,11 +29,7 @@ public class ThreadPoolImpl implements ThreadPool {
         log.debug("Thread pool started!");
     }
 
-    /**
-     * Запускает потоки.
-     * Потоки бездействуют, до тех пор пока не появится новое задание в очереди
-     */
-    public int start() {
+    public int check() {
         return threads.length;
     }
 

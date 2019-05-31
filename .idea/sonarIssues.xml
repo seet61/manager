@@ -88,6 +88,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/test/java/com/github/seet61/manager/dao/TasksDAOTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/test/java/com/github/seet61/manager/threadpool/ThreadPoolImplTest.java">
           <value>
             <set />
