@@ -10,8 +10,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 @Slf4j
@@ -21,6 +23,8 @@ public class ManagerRestService {
     private ThreadQueue queue = new ThreadQueue();
     @Autowired
     private TasksDAO tasksDAO;
+    @Autowired
+    ApplicationContext ctx;
 
     public String runNew(Map<String,String> reqBody) {
         for (int i = 1; i < 5; i++) {
@@ -32,6 +36,7 @@ public class ManagerRestService {
             Tasks tasksEntity = new Tasks();
             tasksEntity.setName(reqBody.get("name") + "_" + i);
             tasksEntity.setStatus("init");
+            ctx.getAutowireCapableBeanFactory().autowireBean(task);
             tasksDAO.save(tasksEntity);
         }
         return "";
@@ -52,6 +57,9 @@ public class ManagerRestService {
         /*Tasks tasksEntity = new Tasks();
         tasksEntity.setName(reqBody.get("name"));
         tasksEntity.setStatus(reqBody.get("status"));*/
+        List<Tasks> t = tasksDAO.findAll();
+        System.out.println("List<Tasks> t");
+        t.forEach(System.out::print);
         tasksDAO.setStatusByName(reqBody.get("status"), reqBody.get("name"));
         return "";
     }

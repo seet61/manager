@@ -12,7 +12,7 @@ public class Tasks {
     @GeneratedValue
     @Column(name = "Id", nullable = false)
     private Long id;
-    @Column(name="name")
+    @Column(name="name", unique=true)
     private String name;
     @Column(name="status")
     private String status;

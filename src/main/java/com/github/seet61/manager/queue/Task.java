@@ -8,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -49,6 +51,7 @@ public class Task implements Runnable{
             result.put("status", "done");
             log.debug(Thread.currentThread().getName() + " task " + this.name + " is stopped");
         } catch (InterruptedException | JSONException e) {
+            e.printStackTrace();
             try {
                 result.put("name", this.name);
                 result.put("status", "error");
@@ -63,13 +66,15 @@ public class Task implements Runnable{
         boolean flag = true;
         log.debug(Thread.currentThread() + " checkPreviousDone " + name);
         while(flag) {
-            List<Tasks> e = tasksDAO.findByName(name);
-            log.debug(Thread.currentThread() + " List<Tasks> e: " + e.toString());
-            if (!e.get(0).getStatus().equals("done")) {
+            Tasks t = tasksDAO.findByName(name);
+            log.debug(Thread.currentThread() + " List t: " + t.toString());
+            if (t.getStatus().equals("done")) {
                 Thread.currentThread().sleep(1000);
             } else {
                 break;
             }
+
+
         }
     }
 
