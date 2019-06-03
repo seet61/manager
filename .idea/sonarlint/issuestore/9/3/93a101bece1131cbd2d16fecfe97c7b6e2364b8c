@@ -1,0 +1,5 @@
+
+dsquid:S2142/"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€8ú‹¡ì°-
+`squid:S22592"BA "NullPointerException" could be thrown; "task" is nullable here.(‚Õõ¿8ú‹¡ì°-
+[squid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8‘ù½í°-
+Fsquid:S11480"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8ú‹¡ì°-

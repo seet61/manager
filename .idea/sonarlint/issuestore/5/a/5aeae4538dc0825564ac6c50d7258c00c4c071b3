@@ -1,0 +1,10 @@
+
+usquid:UselessImportCheck"ERemove this unused import 'org.springframework.stereotype.Component'.(Ş÷Ñ¸ÿÿÿÿÿ8ñ»»ì°-
+isquid:S21425"FEither re-interrupt this method or rethrow the "InterruptedException".(Ëô”Öøÿÿÿÿ8¡Ô¢ë°-
+dsquid:S2184S"FCast one of the operands of this multiplication operation to a "long".(©Ãµ·8¡Ô¢ë°-
+ssquid:UselessImportCheck"HRemove this unused import 'org.springframework.context.annotation.Bean'.(‚î‰Ş8ç²¹ì°-
+Usquid:S2589D"7Remove this expression which always evaluates to "true"(¾İ”8¡Ô¢ë°-
+[squid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8œ‚Øì°-
+Xsquid:S2209H"5Change this instance-reference to a static reference.(éÄä©ıÿÿÿÿ8ñ¥Ëì°-
+Fsquid:S1148;"#Use a logger to log this exception.(Âşÿâûÿÿÿÿ8¡Ô¢ë°-
+Fsquid:S11486"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ĞÌ±ë°-

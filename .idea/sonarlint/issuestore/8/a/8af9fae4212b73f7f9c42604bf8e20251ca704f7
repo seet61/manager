@@ -1,0 +1,7 @@
+
+Fsquid:S1148A"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8Þ›©î°-
+nsquid:CommentedOutCodeLine?"<This block of commented-out lines of code should be removed.(ûƒ½×ùÿÿÿÿ8Þ›©î°-
+Xsquid:S11616":Add the "@Override" annotation above this method signature(“–ýþ8Þ›©î°-
+dsquid:S2142@"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€8Þ›©î°-
+Csquid:S2116H"%Use "Arrays.toString(array)" instead.(î³“ß8Þ›©î°-
+Xsquid:S2209>"5Change this instance-reference to a static reference.(éÄä©ýÿÿÿÿ8Þ›©î°-
